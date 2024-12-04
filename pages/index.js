@@ -1,3 +1,5 @@
+import "react-calendar/dist/Calendar.css";
+import Calendar from "react-calendar";
 export default function Home() {
   return (
     <>
@@ -23,6 +25,8 @@ export default function Home() {
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="w-full md:w-1/2">
                   <label className="block mb-2">Select Date:</label>
+                  <Calendar/>
+
                   <div className="hidden"></div>
                 </div>
 
