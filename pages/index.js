@@ -39,6 +39,57 @@ export default function Home() {
                 </button>
               </div>
             </div>
+            <div className="mt-8">
+              <h2 className="text-xl font-semibold mb-2">Appointments status</h2>
+
+              <div className="flex mb-4">
+                <input
+                  type="email"
+                  placeholder="Enter email to search"
+                  className="border p-2 flex-grow"
+                />
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 ml-2 rounded hover:bg-blue-600"
+                >
+                  Search
+                </button>
+              </div>
+
+              <table className="w-full border border-collapse">
+                <thead>
+                  <tr className="bg-blue-100">
+                    <th className="p-4 text-blue-700">Person</th>
+                    <th className="p-4 text-blue-700">Date</th>
+                    <th className="p-4 text-blue-700">Time</th>
+                    <th className="p-4 text-blue-700">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t">
+                    <td className="p-4">
+                      <div className="flex justify-center">
+                          Tanvi Garg
+                      </div>
+                    </td>
+                    <td className="p-4">
+                      <div className="flex justify-center">
+                        2023-12-01
+                      </div>
+                    </td>
+                    <td className="p-4">
+                      <div className="flex justify-center">
+                        10:00 AM
+                      </div>
+                    </td>
+                    <td className="p-4 text-center">
+                      Confirmed
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
       </div>
