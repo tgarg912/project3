@@ -1,10 +1,15 @@
 import "react-calendar/dist/Calendar.css";
 import Calendar from "react-calendar";
+import { useState } from "react";
+
 export default function Home() {
+  const [isModal, setIsModal] = useState(false);
+
   return (
     <>
       <div
-        className="fixed z-10 block inset-0 flex items-center justify-center"
+        className={`fixed z-10 ${isModal ? "block" : "hidden"
+          } inset-0 flex items-center justify-center`}
         aria-labelledby="modal-title"
         role="dialog"
         aria-modal="true"
@@ -15,6 +20,7 @@ export default function Home() {
             <div className="relative w-full transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-2 sm:w-full sm:max-w-lg">
 
               <button
+                onClick={() => setIsModal(false)}
                 className="absolute top-2 right-2 justify-center rounded-full bg-red-500 hover:bg-red-600 flex focus:outline-none border-2 items-center sm:top-4 sm:right-4 sm:p-3 sm:w-10 sm:h-10 md:w-12 md:h-12"
               >
                 <svg
@@ -117,6 +123,7 @@ export default function Home() {
               </div>
               <div className="text-center md:text-right mt-4">
                 <button
+                  onClick={() => setIsModal(true)}
                   className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                 >
                   Book an Appointment
