@@ -4,13 +4,14 @@ import { useState } from "react";
 
 export default function Home() {
   const [isModal, setIsModal] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const hardcodedEmail = "admin@example.com";
   const hardcodedPassword = "password123";
-
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "email") {
@@ -18,6 +19,11 @@ export default function Home() {
     } else if (name === "password") {
       setPassword(value);
     }
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setSelectedTime(null);
   };
 
   const handleSubmit = (e) => {
@@ -125,7 +131,7 @@ export default function Home() {
               <h2 className="text-xl font-semibold mb-2">Select a Person</h2>
               <div className="space-y-2">
                 <button
-                  className={`w-full h-12 flex items-center justify-center p-2 rounded border border-gray-300 transition-colors hover:bg-blue-500 hover:text-white hover:border-blue-500 m-1`}
+                  className={`w-full h-12 flex items-center justify-center p-2 rounded border bg-blue-500 text-white border-blue-500 m-1`}
                 >
                   Kathleen Malone
                 </button>
@@ -139,10 +145,122 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row gap-4">
                   <div className="w-full md:w-1/2">
                     <label className="block mb-2">Select Date:</label>
-                    <Calendar />
+                    <Calendar
+                      minDate={new Date()}
+                      value={selectedDate}
+                      onChange={handleDateChange}
+                    />
 
                     <div className="hidden"></div>
                   </div>
+                  {selectedDate && (
+                    <div className="w-full md:w-1/2">
+                      <label className="block mb-2">Select Time:</label>
+                      <div className="h-[300px] overflow-y-auto">
+                        <div className="mb-4">
+                          <label className="block mb-2 font-semibold">Morning:</label>
+                          <div className="flex flex-wrap gap-2">
+                            <button
+                              className={`w-[31%] h-12 flex items-center justify-center rounded border border-gray-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 
+                                ${selectedTime === "09:00 AM"
+                                  ? "bg-blue-500 text-white border-blue-500"
+                                  : "bg-white text-blue-500"
+                                }`}
+                              onClick={() => setSelectedTime("09:00 AM")}
+                            >
+                              09:00 AM
+                            </button>
+                            <button
+                              className={`w-[31%] h-12 flex items-center justify-center rounded border border-gray-300 transition-colors hover:bg-blue-500 hover:text-white hover:border-blue-500 ${selectedTime === "09:30 AM"
+                                  ? "bg-blue-500 text-white border-blue-500"
+                                  : "bg-white text-blue-500"
+                                }`}
+                              onClick={() => setSelectedTime("09:30 AM")}
+                            >
+                              09:30 AM
+                            </button>
+                            <button
+                              className={`w-[31%] h-12 flex items-center justify-center rounded border border-gray-300 transition-colors hover:bg-blue-500 hover:text-white hover:border-blue-500 ${selectedTime === "10:00 AM"
+                                  ? "bg-blue-500 text-white border-blue-500"
+                                  : "bg-white text-blue-500"
+                                }`}
+                              onClick={() => setSelectedTime("10:00 AM")}
+                            >
+                              10:00 AM
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block mb-2 font-semibold">Afternoon:</label>
+                          <div className="flex flex-wrap gap-2">
+                            <button
+                              className={`w-[31%] h-12 flex items-center justify-center rounded border border-gray-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 
+                                ${selectedTime === "02:00 PM"
+                                  ? "bg-blue-500 text-white border-blue-500"
+                                  : "bg-white text-blue-500"
+                                }`}
+                              onClick={() => setSelectedTime("02:00 PM")}
+                            >
+                              02:00 PM
+                            </button>
+                            <button
+                              className={`w-[31%] h-12 flex items-center justify-center rounded border border-gray-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 ${selectedTime === "02:30 PM"
+                                  ? "bg-blue-500 text-white border-blue-500"
+                                  : "bg-white text-blue-500"
+                                }`}
+                              onClick={() => setSelectedTime("02:30 PM")}
+                            >
+                              02:30 PM
+                            </button>
+                            <button
+                              className={`w-[31%] h-12 flex items-center justify-center rounded border border-gray-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 ${selectedTime === "03:00 PM"
+                                  ? "bg-blue-500 text-white border-blue-500"
+                                  : "bg-white text-blue-500"
+                                }`}
+                              onClick={() => setSelectedTime("03:00 PM")}
+                            >
+                              03:00 PM
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="mb-4">
+                          <label className="block mb-2 font-semibold">Evening:</label>
+                          <div className="flex flex-wrap gap-2">
+                            <button
+                              className={`w-[31%] h-12 flex items-center justify-center rounded border border-gray-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 ${selectedTime === "05:00 PM"
+                                  ? "bg-blue-500 text-white border-blue-500"
+                                  : "bg-white text-blue-500"
+                                }`}
+                              onClick={() => setSelectedTime("05:00 PM")}
+                            >
+                              05:00 PM
+                            </button>
+                            <button
+                              className={`w-[31%] h-12 flex items-center justify-center rounded border border-gray-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 ${selectedTime === "05:30 PM"
+                                  ? "bg-blue-500 text-white border-blue-500"
+                                  : "bg-white text-blue-500"
+                                }`}
+                              onClick={() => setSelectedTime("05:30 PM")}
+                            >
+                              05:30 PM
+                            </button>
+                            <button
+                              className={`w-[31%] h-12 flex items-center justify-center rounded border border-gray-300 hover:bg-blue-500 hover:text-white hover:border-blue-500 ${selectedTime === "06:00 PM"
+                                  ? "bg-blue-500 text-white border-blue-500"
+                                  : "bg-white text-blue-500"
+                                }`}
+                              onClick={() => setSelectedTime("06:00 PM")}
+                            >
+                              06:00 PM
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
 
                 </div>
                 <div className="text-center md:text-right mt-4">
@@ -211,7 +329,7 @@ export default function Home() {
       </>
     )
   }
-  
+
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -271,3 +389,4 @@ export default function Home() {
     </>
   );
 }
+
