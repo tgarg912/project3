@@ -34,6 +34,11 @@ export default function Home() {
       setError("Invalid email or password");
     }
   };
+  const handleSubmitRequest = (e) => {
+    e.preventDefault();
+    alert("Appointment request submitted successfully!");
+    setIsModal(false);
+  };
 
   if (isLoggedIn) {
     return (
@@ -44,18 +49,18 @@ export default function Home() {
           role="dialog"
           aria-modal="true"
         >
-          <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-          <div class="relative z-10 w-full max-w-screen-md overflow-y-auto">
-            <div class="flex flex-col items-center justify-center p-4 text-center">
-              <div class="relative w-full transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-2 sm:w-full sm:max-w-lg">
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+          <div className="relative z-10 w-full max-w-screen-md overflow-y-auto">
+            <div className="flex flex-col items-center justify-center p-4 text-center">
+              <div className="relative w-full transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-2 sm:w-full sm:max-w-lg">
 
                 <button
                   onClick={() => setIsModal(false)}
-                  class="absolute top-2 right-2 justify-center rounded-full bg-red-500 hover:bg-red-600 flex focus:outline-none border-2 items-center sm:top-4 sm:right-4 sm:p-3 sm:w-10 sm:h-10 md:w-12 md:h-12"
+                  className="absolute top-2 right-2 justify-center rounded-full bg-red-500 hover:bg-red-600 flex focus:outline-none border-2 items-center sm:top-4 sm:right-4 sm:p-3 sm:w-10 sm:h-10 md:w-12 md:h-12"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="md:h-14 md:w-14 h-7 w-7 focus:ring focus:ring-red-400 text-white"
+                    className="md:h-14 md:w-14 h-7 w-7 focus:ring focus:ring-red-400 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -69,52 +74,52 @@ export default function Home() {
                   </svg>
                 </button>
 
-                <form class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                  <h3 class="text-xl font-semibold mb-4">Appointment Request</h3>
-                  <div class="mb-4">
-                    <label class="block mb-1">Student Name:</label>
+                <form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4" onSubmit={handleSubmitRequest}>
+                  <h3 className="text-xl font-semibold mb-4">Appointment Request</h3>
+                  <div className="mb-4">
+                    <label className="block mb-1">Student Name:</label>
                     <input
                       type="text"
                       name="studentName"
-                      class="w-full border border-gray-300 rounded px-3 py-2"
+                      className="w-full border border-gray-300 rounded px-3 py-2"
                       placeholder="Student Name"
                       required
                     />
                   </div>
-                  <div class="mb-4">
-                    <label class="block mb-1">Student's Class:</label>
+                  <div className="mb-4">
+                    <label className="block mb-1">Student's Class:</label>
                     <input
                       type="text"
                       name="studentClass"
-                      class="w-full border border-gray-300 rounded px-3 py-2"
+                      className="w-full border border-gray-300 rounded px-3 py-2"
                       placeholder="Student's Class"
                       required
                     />
                   </div>
-                  <div class="mb-4">
-                    <label class="block mb-1">School Email:</label>
+                  <div className="mb-4">
+                    <label className="block mb-1">School Email:</label>
                     <input
                       type="email"
                       name="schoolEmail"
-                      class="w-full border border-gray-300 rounded px-3 py-2"
+                      className="w-full border border-gray-300 rounded px-3 py-2"
                       placeholder="School Email"
                       required
                     />
                   </div>
-                  <div class="mb-4">
-                    <label class="block mb-1">Reason for Appointment:</label>
+                  <div className="mb-4">
+                    <label className="block mb-1">Reason for Appointment:</label>
                     <textarea
                       name="reason"
                       rows="4"
-                      class="w-full border border-gray-300 rounded px-3 py-2"
+                      className="w-full border border-gray-300 rounded px-3 py-2"
                       placeholder="Enter your reason for the appointment"
                       required
                     ></textarea>
                   </div>
-                  <div class="text-center">
+                  <div className="text-center">
                     <button
                       type="submit"
-                      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                     >
                       Submit Request
                     </button>
@@ -272,49 +277,49 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-              <div class="mt-8">
-                <h2 class="text-xl font-semibold mb-2">Appointments</h2>
+              <div className="mt-8">
+                <h2 className="text-xl font-semibold mb-2">Appointments</h2>
 
-                <div class="flex mb-4">
+                <div className="flex mb-4">
                   <input
                     type="email"
                     placeholder="Enter email to search"
-                    class="border p-2 flex-grow"
+                    className="border p-2 flex-grow"
                   />
                   <button
-                    class="bg-blue-500 text-white px-4 py-2 ml-2 rounded hover:bg-blue-600"
+                    className="bg-blue-500 text-white px-4 py-2 ml-2 rounded hover:bg-blue-600"
                   >
                     Search
                   </button>
                 </div>
 
-                <table class="w-full border border-collapse">
+                <table className="w-full border border-collapse">
                   <thead>
-                    <tr class="bg-blue-100">
-                      <th class="p-4 text-blue-700">Person</th>
-                      <th class="p-4 text-blue-700">Date</th>
-                      <th class="p-4 text-blue-700">Time</th>
-                      <th class="p-4 text-blue-700">Status</th>
+                    <tr className="bg-blue-100">
+                      <th className="p-4 text-blue-700">Person</th>
+                      <th className="p-4 text-blue-700">Date</th>
+                      <th className="p-4 text-blue-700">Time</th>
+                      <th className="p-4 text-blue-700">Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-t">
-                      <td class="p-4">
-                        <div class="flex justify-center">
+                    <tr className="border-t">
+                      <td className="p-4">
+                        <div className="flex justify-center">
                           Tanvi Garg
                         </div>
                       </td>
-                      <td class="p-4">
-                        <div class="flex justify-center">
+                      <td className="p-4">
+                        <div className="flex justify-center">
                           2023-12-01
                         </div>
                       </td>
-                      <td class="p-4">
-                        <div class="flex justify-center">
+                      <td className="p-4">
+                        <div className="flex justify-center">
                           10:00 AM
                         </div>
                       </td>
-                      <td class="p-4 text-center">
+                      <td className="p-4 text-center">
                         Confirmed
                       </td>
                     </tr>
