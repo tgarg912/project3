@@ -36,6 +36,8 @@ export default function Home() {
   };
   const handleSubmitRequest = (e) => {
     e.preventDefault();
+    alert("Appointment request submitted successfully!");
+    setIsModal(false);
   };
 
   if (isLoggedIn) {
