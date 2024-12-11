@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [isModal, setIsModal] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
